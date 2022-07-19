@@ -41,7 +41,7 @@ typedef struct _NVPACKET{
 } nvPacket;
 
 typedef struct _NVFRAME{
-	unsigned long flags;
+	bool idr;
 	unsigned long payload_size[3];
 	unsigned char *payload[3];
 	unsigned int linesize[3];
@@ -78,6 +78,10 @@ extern "C" {
 	nvmpictx* nvmpi_create_encoder(nvCodingType codingType,nvEncParam * param);
 		
 	int nvmpi_encoder_put_frame(nvmpictx* ctx,nvFrame* frame);
+		
+	int nvmpi_encoder_set_bitrate(nvmpictx* ctx, int bitrate);
+
+	int nvmpi_encoder_force_idr(nvmpictx* ctx);
 
 	int nvmpi_encoder_get_packet(nvmpictx* ctx,nvPacket* packet);
 
