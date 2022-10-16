@@ -15,8 +15,9 @@ COPY . .
 ENV CROSS_COMPILE=/usr/bin/aarch64-linux-gnu-
 ENV TARGET_ROOTFS=/l4t/targetfs
 
-RUN mkdir build && cd build && cmake --prefix /out .. && make -j$(nproc)
+RUN mkdir /out
+RUN mkdir build && cd build && cmake .. && make -j$(nproc) && make DESTDIR=/out install
 
 FROM scratch
 
-COPY --from=builder /out /usr/lib
+COPY --from=builder /out/usr/local /usr
