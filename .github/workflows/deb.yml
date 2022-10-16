@@ -30,7 +30,6 @@ jobs:
         with:
           tag_prefix: ""
           format: ${{ github.event_name == 'release' && '${major}.${minor}.${patch}' || '${major}.${minor}.${patch}-prerelease${increment}' }}
-          bump_each_commit: true
       - uses: jiro4989/build-deb-action@v2
         id: build
         with:
