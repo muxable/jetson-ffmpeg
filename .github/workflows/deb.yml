@@ -32,10 +32,18 @@ jobs:
             VERSION=${{ steps.semantic.outputs.version }}
           context: .
           outputs: build
+      - uses: jiro4989/build-deb-action@v2
+        id: build
+        with:
+          package: muxable-libsrt
+          package_root: ./build
+          maintainer: Kevin Wang <kevin@muxable.com>
+          version: ${{ steps.semantic.outputs.version }}
+          arch: 'arm64'
       - uses: actions/upload-artifact@v3
         with:
           name: libnvmpi-arm64.deb
-          path: build/*.deb
+          path: ${{ steps.build.outputs.file_name }}
 
   unstable-deploy:
     needs: deb

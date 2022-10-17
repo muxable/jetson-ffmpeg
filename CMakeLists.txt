@@ -4,15 +4,6 @@ option(NVMPI_VERSION "Version to build as" "0.0.1")
 
 project(nvmpi VERSION ${NVMPI_VERSION} DESCRIPTION "nvidia multimedia api")
 
-set(CPACK_PACKAGE_NAME "muxable-libnvmpi")
-set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "arm64")
-set(CPACK_PACKAGE_ARCHITECTURE "arm64")
-set(CPACK_PACKAGE_VERSION ${NVMPI_VERSION})
-set(CPACK_PACKAGE_CONTACT "Kevin Wang <kevin@muxable.com>")
-set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
-
-include(CPack)
-
 set(CMAKE_C_COMPILER $ENV{CROSS_COMPILE}gcc)
 set(CMAKE_CXX_COMPILER $ENV{CROSS_COMPILE}g++)
 

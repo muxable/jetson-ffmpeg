@@ -17,7 +17,7 @@ ENV TARGET_ROOTFS=/l4t/targetfs
 ARG VERSION=0.0.1
 
 RUN mkdir /out
-RUN mkdir build && cd build && cmake -DNVMPI_VERSION="$VERSION" .. && make -j$(nproc) && cpack -G DEB
+RUN mkdir build && cd build && cmake -DNVMPI_VERSION="$VERSION" -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc) && make DESTDIR=/out install
 RUN cp build/*.deb /out
 
 FROM scratch
