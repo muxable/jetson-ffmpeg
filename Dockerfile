@@ -18,7 +18,7 @@ ENV CROSS_COMPILE=/usr/bin/aarch64-linux-gnu-
 ENV TARGET_ROOTFS=/l4t/targetfs
 
 RUN mkdir /out
-RUN mkdir build && cd build && cmake -DCPACK_PACKAGE_VERSION=$VERSION .. && make -j$(nproc) && cpack -G DEB
+RUN mkdir build && cd build && cmake -DCPACK_PACKAGE_VERSION=$VERSION -DCMAKE_PROJECT_VERSION=$VERSION .. && make -j$(nproc) && cpack -G DEB
 RUN cp build/*.deb /out
 
 FROM scratch
