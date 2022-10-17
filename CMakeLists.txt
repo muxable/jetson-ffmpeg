@@ -11,6 +11,8 @@ set(CPACK_PACKAGE_VERSION ${NVMPI_VERSION})
 set(CPACK_PACKAGE_CONTACT "Kevin Wang <kevin@muxable.com>")
 set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 
+include(CPack)
+
 set(CMAKE_C_COMPILER $ENV{CROSS_COMPILE}gcc)
 set(CMAKE_CXX_COMPILER $ENV{CROSS_COMPILE}g++)
 
@@ -62,7 +64,6 @@ target_include_directories(nvmpi PRIVATE $ENV{TARGET_ROOTFS}/usr/local/cuda/incl
 target_include_directories(nvmpi_static PRIVATE $ENV{TARGET_ROOTFS}/usr/src/jetson_multimedia_api/include)
 target_include_directories(nvmpi_static PRIVATE $ENV{TARGET_ROOTFS}/usr/local/cuda/include)
 configure_file(nvmpi.pc.in nvmpi.pc @ONLY)
-include(CPack)
 include(GNUInstallDirs)
 install(TARGETS nvmpi nvmpi_static
 	    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
