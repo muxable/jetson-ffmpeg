@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.9)
 
 option(NVMPI_VERSION "Version to build as" "0.0.1")
 
-project(nvmpi VERSION ${NVMPI_VERSION} DESCRIPTION "nvidia multimedia api")
+project(nvmpi VERSION ${NVMPI_VERSION} DESCRIPTION "Jetson hardware encoder/decoder API")
 
 set(CPACK_PACKAGE_NAME "muxable-libnvmpi")
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "arm64")
