@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(nvmpi VERSION 1.0.3 DESCRIPTION "nvidia multimedia api")
+project(nvmpi VERSION 0.0.1 DESCRIPTION "nvidia multimedia api")
 
 set(CPACK_PACKAGE_NAME "muxable-libnvmpi")
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "arm64")
