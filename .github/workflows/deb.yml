@@ -21,27 +21,21 @@ jobs:
           large-packages: true
           swap-storage: true
       - uses: actions/checkout@v2
-      - uses: docker/build-push-action@v3
-        with:
-          context: .
-          outputs: build
       - uses: paulhatch/semantic-version@v4
         id: semantic
         with:
           tag_prefix: ""
           format: ${{ github.event_name == 'release' && '${major}.${minor}.${patch}' || '${major}.${minor}.${patch}-prerelease${increment}' }}
-      - uses: jiro4989/build-deb-action@v2
-        id: build
+      - uses: docker/build-push-action@v3
         with:
-          package: muxable-libnvmpi
-          package_root: ./build
-          maintainer: Kevin Wang <kevin@muxable.com>
-          version: ${{ steps.semantic.outputs.version }}
-          arch: 'arm64'
+          build-args: |
+            VERSION=${{ steps.semantic.outputs.version }}
+          context: .
+          outputs: build
       - uses: actions/upload-artifact@v3
         with:
           name: libnvmpi-arm64.deb
-          path: ${{ steps.build.outputs.file_name }}
+          path: build/*.deb
 
   unstable-deploy:
     needs: deb
