@@ -20,4 +20,7 @@ RUN mkdir build && cd build && cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(
 
 FROM scratch
 
-COPY --from=builder /out/usr /usr
+# this is not actually correct since we are cross compiling
+COPY --from=builder /out/usr/lib/x86_64-linux-gnu /usr/lib
+COPY --from=builder /out/usr/include /usr/include
+COPY --from=builder /out/usr/share /usr/share

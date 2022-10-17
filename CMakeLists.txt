@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.9)
-project(nvmpi VERSION 1.0.0 DESCRIPTION "nvidia multimedia api")
+project(nvmpi VERSION 1.0.3 DESCRIPTION "nvidia multimedia api")
 
 set(CMAKE_C_COMPILER $ENV{CROSS_COMPILE}gcc)
 set(CMAKE_CXX_COMPILER $ENV{CROSS_COMPILE}g++)
