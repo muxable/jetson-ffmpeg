@@ -1,6 +1,8 @@
 # jetson-ffmpeg
 L4T Multimedia API for ffmpeg
 
+**fork changes:** use dockerfile to build with buildx.
+
 **1.build and install library**
 
     git clone https://github.com/jocover/jetson-ffmpeg.git
