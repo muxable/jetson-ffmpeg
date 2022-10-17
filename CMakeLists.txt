@@ -4,9 +4,6 @@ option(NVMPI_VERSION "Version to build as" "0.0.1")
 
 project(nvmpi VERSION ${NVMPI_VERSION} DESCRIPTION "Jetson hardware encoder/decoder API")
 
-set(CMAKE_C_COMPILER $ENV{CROSS_COMPILE}gcc)
-set(CMAKE_CXX_COMPILER $ENV{CROSS_COMPILE}g++)
-
 set(CMAKE_C_FLAGS“$ {CMAKE_C_FLAGS} -fPIC”)
 set(CMAKE_CXX_FLAGS“$ {CMAKE_CXX_FLAGS} -fPIC”)
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath-link=$ENV{TARGET_ROOTFS}/usr/lib/aarch64-linux-gnu/tegra")

@@ -17,7 +17,8 @@ ENV TARGET_ROOTFS=/l4t/targetfs
 ARG VERSION=0.0.1
 
 RUN mkdir /out
-RUN mkdir build && cd build && cmake -DNVMPI_VERSION="$VERSION" -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc) && make DESTDIR=/out install
+RUN mkdir build
+RUN cd build && cmake -DNVMPI_VERSION="$VERSION" -DCMAKE_TOOLCHAIN_FILE=../aarch64.cmake -DCMAKE_INSTALL_PREFIX=/usr .. && make -j$(nproc) && make DESTDIR=/out install
 
 FROM scratch
 
