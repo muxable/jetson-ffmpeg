@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 3.9)
-project(nvmpi VERSION 0.0.1 DESCRIPTION "nvidia multimedia api")
+
+option(NVMPI_VERSION "Version to build as" "0.0.1")
+
+project(nvmpi VERSION ${NVMPI_VERSION} DESCRIPTION "nvidia multimedia api")
 
 set(CPACK_PACKAGE_NAME "muxable-libnvmpi")
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "arm64")
 set(CPACK_PACKAGE_ARCHITECTURE "arm64")
-set(CPACK_PACKAGE_VERSION "0.0.1")
+set(CPACK_PACKAGE_VERSION ${NVMPI_VERSION})
 set(CPACK_PACKAGE_CONTACT "Kevin Wang <kevin@muxable.com>")
 set(CPACK_DEBIAN_FILE_NAME DEB-DEFAULT)
 
