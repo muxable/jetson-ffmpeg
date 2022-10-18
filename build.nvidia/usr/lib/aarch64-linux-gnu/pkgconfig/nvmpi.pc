@@ -1,0 +1,12 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: nvmpi
+Description: Jetson hardware encoder/decoder API
+Version: 0.0.1
+
+Requires:
+Libs: -L${libdir} -lnvmpi
+Cflags: -I${includedir} 

@@ -11,32 +11,17 @@ jobs:
   deb:
     runs-on: ubuntu-latest
     steps:
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: true
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
       - uses: actions/checkout@v2
       - uses: paulhatch/semantic-version@v4
         id: semantic
         with:
           tag_prefix: ""
           format: ${{ github.event_name == 'release' && '${major}.${minor}.${patch}' || '${major}.${minor}.${patch}-prerelease${increment}' }}
-      - uses: docker/build-push-action@v3
-        with:
-          build-args: |
-            VERSION=${{ steps.semantic.outputs.version }}
-          context: .
-          outputs: build
       - uses: jiro4989/build-deb-action@v2
         id: build
         with:
           package: muxable-libnvmpi
-          package_root: ./build
+          package_root: ./build.nvidia
           maintainer: Kevin Wang <kevin@muxable.com>
           version: ${{ steps.semantic.outputs.version }}
           arch: 'arm64'
